@@ -1,0 +1,60 @@
+# PHP
+# Test and package your PHP project.
+# Add steps that run tests, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/php
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-16.04'
+
+variables:
+  phpVersion: 7.3
+
+steps:
+  - checkout: self
+    persistCredentials: true
+  - task: Bash@3
+    displayName: 'Set PHP Version'
+    inputs:
+      targetType: 'inline'
+      script: |
+        sudo update-alternatives --set php /usr/bin/php$(phpVersion)
+        sudo update-alternatives --set phar /usr/bin/phar$(phpVersion)
+        sudo update-alternatives --set phpdbg /usr/bin/phpdbg$(phpVersion)
+        sudo update-alternatives --set php-cgi /usr/bin/php-cgi$(phpVersion)
+        sudo update-alternatives --set phar.phar /usr/bin/phar.phar$(phpVersion)
+  - task: Bash@3
+    displayName: 'Setup Environment'
+    inputs:
+      filePath: 'blt/scripts/azure/setup_env.sh'
+  - task: NodeTool@0
+    displayName: 'Install Node JS'
+    inputs:
+      versionSpec: '10.x'
+  - task: Bash@3
+    displayName: 'Install Dependencies'
+    inputs:
+      targetType: 'inline'
+      script: |
+        composer validate --no-check-all --ansi
+        composer install
+        npm install npm@latest -g
+  - task: Bash@3
+    displayName: 'Validate'
+    inputs:
+      filePath: 'blt/scripts/azure/validate.sh'
+  - task: Bash@3
+    displayName: 'Setup App'
+    inputs:
+      filePath: 'blt/scripts/azure/setup_app.sh'
+  - task: Bash@3
+    displayName: 'Run Tests'
+    inputs:
+      filePath: 'blt/scripts/azure/test.sh'
+  - task: Bash@3
+    displayName: 'Deploy'
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    inputs:
+      filePath: 'blt/scripts/azure/deploy_artifact.sh'

@@ -1,0 +1,19 @@
+{
+  "name": "mikemadison13/blt-azure-pipelines",
+  "description": "Azure Pipelines integration for Acquia BLT.",
+  "license": "GPL-2.0+",
+  "authors":[
+    {
+      "name": "Mike Madison",
+      "homepage": "https://mikemadison.net",
+      "role": "Maintainer"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Acquia\\AzureDector\\": "./src/"
+    },
+    "classmap":["src/Blt/Plugin/EnvironmentDetector/AzureDetector.php"]
+  }
+}
