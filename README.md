@@ -1,7 +1,7 @@
 Acquia BLT Azure Pipelines integration
 ====
 
-This is an [Acquia BLT](https://github.com/acquia/blt) plugin providing [Azure Devops Piipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) integration.
+This is an [Acquia BLT](https://github.com/acquia/blt) plugin providing [Azure Devops Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) integration.
 
 This plugin is **community-created** and **community-supported**. Acquia does not provide any direct support for this software or provide any warranty as to its stability.
 
@@ -13,7 +13,7 @@ In your project, require the plugin with Composer:
 
 `composer require mikemadison13/blt-azure-pipelines`
 
-Initialize the Tugboat integration by calling `recipes:ci:tugboat:init`, which is provided by this plugin:
+Initialize the Azure integration by calling `recipes:ci:azure:init`, which is provided by this plugin:
 
 `blt recipes:ci:azure:init`
 

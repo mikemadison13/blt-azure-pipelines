@@ -1,6 +1,6 @@
 <?php
 
-namespace Acquia\Blt\Plugin\EnvironmentDetector;
+namespace Acquia\AzurePipelines\Blt\Plugin\EnvironmentDetector;
 
 use Acquia\Blt\Robo\Common\EnvironmentDetector;
 
