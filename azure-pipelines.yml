@@ -11,6 +11,7 @@ pool:
 
 variables:
   phpVersion: 7.3
+  scriptDir: $(Build.Repository.LocalPath)/vendor/mikemadison13/blt-azure-pipelines/scripts/azure
 
 steps:
   - checkout: self
@@ -25,10 +26,6 @@ steps:
         sudo update-alternatives --set phpdbg /usr/bin/phpdbg$(phpVersion)
         sudo update-alternatives --set php-cgi /usr/bin/php-cgi$(phpVersion)
         sudo update-alternatives --set phar.phar /usr/bin/phar.phar$(phpVersion)
-  - task: Bash@3
-    displayName: 'Setup Environment'
-    inputs:
-      filePath: 'blt/scripts/azure/setup_env.sh'
   - task: NodeTool@0
     displayName: 'Install Node JS'
     inputs:
@@ -44,17 +41,21 @@ steps:
   - task: Bash@3
     displayName: 'Validate'
     inputs:
-      filePath: 'blt/scripts/azure/validate.sh'
+      filePath: '$(scriptDir)/validate.sh'
+  - task: Bash@3
+    displayName: 'Setup Environment'
+    inputs:
+      filePath: '$(scriptDir)/setup_env.sh'
   - task: Bash@3
     displayName: 'Setup App'
     inputs:
-      filePath: 'blt/scripts/azure/setup_app.sh'
+      filePath: '$(scriptDir)/setup_app.sh'
   - task: Bash@3
     displayName: 'Run Tests'
     inputs:
-      filePath: 'blt/scripts/azure/test.sh'
+      filePath: '$(scriptDir)/test.sh'
   - task: Bash@3
     displayName: 'Deploy'
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     inputs:
-      filePath: 'blt/scripts/azure/deploy_artifact.sh'
+      filePath: '$(scriptDir)/deploy_artifact.sh'
