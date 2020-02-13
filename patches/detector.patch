@@ -1,0 +1,20 @@
+diff --git a/src/Robo/Common/EnvironmentDetector.php b/src/Robo/Common/EnvironmentDetector.php
+index a92f2871..a73277e6 100644
+--- a/src/Robo/Common/EnvironmentDetector.php
++++ b/src/Robo/Common/EnvironmentDetector.php
+@@ -349,10 +349,12 @@ class EnvironmentDetector {
+    */
+   private static function getSubclassResults($functionName) {
+     if (!defined('DRUPAL_ROOT')) {
+-      // Do nothing if called outside of a Drupal bootstrap.
+-      return [];
++      $path = __DIR__ . "../../../../../../../docroot/autoload.php";
+     }
+-    $autoloader = require DRUPAL_ROOT . '/autoload.php';
++    else {
++      $path = DRUPAL_ROOT . '/autoload.php';
++    }
++    $autoloader = require $path;
+     $classMap = $autoloader->getClassMap();
+     $detectors = array_filter($classMap, function ($classPath) {
+       return strpos($classPath, 'Blt/Plugin/EnvironmentDetector') !== FALSE;
