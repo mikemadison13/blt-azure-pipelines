@@ -15,7 +15,7 @@
   "extra": {
     "patches": {
       "acquia/blt": {
-        "Extend Environment Detector per BLT issue 4011": "https://patch-diff.githubusercontent.com/raw/mikemadison13/blt-azure-pipelines/pull/1.patch"
+        "Extend Environment Detector per BLT issue 4011": "https://github.com/acquia/blt/pull/4013.patch"
       }
     }
   },
