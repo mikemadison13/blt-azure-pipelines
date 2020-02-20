@@ -15,7 +15,7 @@
   "extra": {
     "patches": {
       "acquia/blt": {
-        "Extend Environment Detector per BLT issue 4011": "https://github.com/acquia/blt/pull/4013.patch"
+        "Extend Environment Detector per BLT issue 4011": "https://github.com/acquia/blt/pull/4017.patch"
       }
     }
   },
