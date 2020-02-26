@@ -2,6 +2,6 @@
 
 set -ev
 
-blt artifact:deploy --commit-msg "Automated commit by Azure Pipelines for Build ${Build.BuildId}" --branch "${Build.SourceBranch}-build" --no-interaction --verbose
+blt artifact:deploy --commit-msg "Automated commit by Azure Pipelines for Build $BUILD_BUILDID}" --branch "$BUILD_SOURCEBRANCH-build" --no-interaction --verbose
 
 set +v
