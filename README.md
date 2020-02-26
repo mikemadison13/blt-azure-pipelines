@@ -17,7 +17,9 @@ Initialize the Azure integration by calling `recipes:ci:azure:init`, which is pr
 
 `blt recipes:ci:azure:init`
 
-This will copy a template Makefile to your project root directory. Make sure to commit this as well as your updated composer.json to Git.
+This will copy a template version of the azure-pipelines.yml to your project root directory. Make sure to commit this as well as your updated composer.json to Git.
+
+Note: the template YAML file assumes standard BLT steps for builds (and is similar to the templated Travis CI and Acquia Piplines files). Modifications can be made as necessary! Build scripts can also be modified by copying them out of this plugin and changing the file path as needed in the YAML file. 
 
 ### SSH / Deploy Configuration
 
