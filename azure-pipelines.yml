@@ -3,9 +3,6 @@
 # Add steps that run tests, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/php
 
-trigger:
-- master
-
 pool:
   vmImage: 'ubuntu-16.04'
 
@@ -14,6 +11,11 @@ variables:
   scriptDir: $(Build.Repository.LocalPath)/vendor/mikemadison13/blt-azure-pipelines/scripts/azure
 
 steps:
+  - task: InstallSSHKey@0
+      inputs:
+        knownHostsEntry: $(host)
+        sshPublicKey: $(public)
+        sshKeySecureFile: 'private'
   - checkout: self
     persistCredentials: true
   - task: Bash@3
@@ -56,6 +58,6 @@ steps:
       filePath: '$(scriptDir)/test.sh'
   - task: Bash@3
     displayName: 'Deploy'
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    condition: and(succeeded(), in(variables['Build.Reason'], 'IndividualCI', 'BatchedCI'))
     inputs:
       filePath: '$(scriptDir)/deploy_artifact.sh'
