@@ -9,9 +9,7 @@
       "role": "Maintainer"
     }
   ],
-  "require": {
-    "acquia/blt": "^10 | ^11"
-  },
+  "require": {},
   "extra": {
     "patches": {
       "acquia/blt": {
