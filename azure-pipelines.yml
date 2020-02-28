@@ -12,10 +12,10 @@ variables:
 
 steps:
   - task: InstallSSHKey@0
-      inputs:
-        knownHostsEntry: $(host)
-        sshPublicKey: $(public)
-        sshKeySecureFile: 'private'
+    inputs:
+      knownHostsEntry: $(host)
+      sshPublicKey: $(public)
+      sshKeySecureFile: 'private'
   - checkout: self
     persistCredentials: true
   - task: Bash@3
