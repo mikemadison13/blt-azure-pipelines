@@ -7,7 +7,7 @@ This plugin is **community-created** and **community-supported**. Acquia does no
 
 ## Installation and usage
 
-To use this plugin, you must already have a Drupal project using BLT 10 (or higher).
+To use this plugin, you must already have a Drupal project using BLT 11.3 (or higher). While the Environment Detector was added in BLT 10, the fix to properly [subclass was not introduced until this commit](https://github.com/acquia/blt/pull/4017) (and released in [11.3](https://github.com/acquia/blt/releases/tag/11.3.0))
 
 In your project, require the plugin with Composer:
 
