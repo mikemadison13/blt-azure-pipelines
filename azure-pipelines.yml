@@ -19,7 +19,7 @@ steps:
   - checkout: self
     persistCredentials: true
   - task: Bash@3
-    displayName: 'Set PHP Version'
+    displayName: 'Setup PHP and MySQL'
     inputs:
       targetType: 'inline'
       script: |
@@ -28,6 +28,7 @@ steps:
         sudo update-alternatives --set phpdbg /usr/bin/phpdbg$(phpVersion)
         sudo update-alternatives --set php-cgi /usr/bin/php-cgi$(phpVersion)
         sudo update-alternatives --set phar.phar /usr/bin/phar.phar$(phpVersion)
+        sudo service mysql start
   - task: NodeTool@0
     displayName: 'Install Node JS'
     inputs:
