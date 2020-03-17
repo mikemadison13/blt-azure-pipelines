@@ -10,8 +10,7 @@
     }
   ],
   "require": {},
-  "extra": {
-    "patches": {},
+  "extra": {},
   "autoload": {
     "psr-4": {
       "Acquia\\AzurePipelines\\": "./src/"
