@@ -11,12 +11,7 @@
   ],
   "require": {},
   "extra": {
-    "patches": {
-      "acquia/blt": {
-        "Extend Environment Detector per BLT issue 4011": "https://github.com/acquia/blt/pull/4017.patch"
-      }
-    }
-  },
+    "patches": {},
   "autoload": {
     "psr-4": {
       "Acquia\\AzurePipelines\\": "./src/"
