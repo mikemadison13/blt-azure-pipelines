@@ -7,7 +7,7 @@ use Acquia\Blt\Robo\Exceptions\BltException;
 use Robo\Contract\VerbosityThresholdInterface;
 
 /**
- * Defines commands related to Tugboat.
+ * Defines commands related to Azure DevOps.
  */
 class AzureCommands extends BltTasks {
 
