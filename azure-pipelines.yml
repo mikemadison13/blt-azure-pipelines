@@ -4,10 +4,10 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/php
 
 pool:
-  vmImage: 'ubuntu-16.04'
+  vmImage: 'ubuntu-latest'
 
 variables:
-  phpVersion: 7.3
+  phpVersion: 7.4
   scriptDir: $(Build.Repository.LocalPath)/vendor/mikemadison13/blt-azure-pipelines/scripts/azure
 
 steps:
@@ -32,7 +32,7 @@ steps:
   - task: NodeTool@0
     displayName: 'Install Node JS'
     inputs:
-      versionSpec: '10.x'
+      versionSpec: '12.x'
   - task: Bash@3
     displayName: 'Install Dependencies'
     inputs:
